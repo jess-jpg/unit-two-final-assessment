@@ -324,7 +324,81 @@ public class AccountSettings {
         AccountSettings account = new AccountSettings();
 
         // accessors
+        System.out.println("ACCESSORS");
+        System.out.println("Username: " + account.getUsername());
+        System.out.println("Password: " + account.getPassword());
+        System.out.println("Email: " + account.getEmail());
+        System.out.println("Display Name: " + account.getDisplayName());
+        System.out.println("Date Of Birth (mmddyyyy): " + account.getDateOfBirth());
+        System.out.println("Explicit Content On: " + account.getIsExplicitOn());
+        System.out.println("Autoplay On: " + account.getIsAutoplayOn());
+        System.out.println("Private Listening On: " + account.getIsPrivateListeningOn());
+
+        System.out.println();
+        System.out.println("-----------");
+        System.out.println();
+
         // mutators
+        System.out.println("MUTATORS");
+        System.out.println();
+
+        System.out.println("Setting displayName:");
+        account.setDisplayName(""); // invalid (too short)
+        System.out.println(account.getDisplayName()); // note that display name doesn't change
+        account.setDisplayName("jessica!!"); // valid
+        System.out.println(account.getDisplayName()); // display name now changes, from luvr to jessica!!
+        System.out.println();
+
+        System.out.println("Setting dateOfBirth:");
+        account.setDateOfBirth("01012000"); // setting dob to january 1st, 2000
+        System.out.println(account.getDateOfBirth());
+        System.out.println();
+
+        System.out.println("Setting isExplicitOn:");
+        account.setIsExplicitOn(false);
+        System.out.println(account.getIsExplicitOn());
+        System.out.println();
+
+        System.out.println("Setting isAutoplayOn:");
+        account.setIsAutoplayOn(true);
+        System.out.println(account.getIsAutoplayOn());
+        System.out.println();
+
+        System.out.println("Setting isPrivateListeningOn:");
+        account.setIsPrivateListeningOn(true);
+        System.out.println(account.getIsPrivateListeningOn());
+        System.out.println();
+
+        System.out.println();
+        System.out.println("-----------");
+        System.out.println();
+
         // other methods
+        System.out.println("OTHER METHODS:");
+
+        System.out.println("Demonstrating changePassword()");
+
+        account.changePassword("not right pw", "1", ""); // old passwords do not match
+        System.out.println();
+        account.changePassword("myCoolPW1!", "aBcDe1234", "edCba4321"); // new passwords do not match
+        System.out.println();
+        account.changePassword("myCoolPW1!", "abcdefg", "abcdefg"); // pw does not meet character requirements
+        System.out.println();
+        account.changePassword("myCoolPW1!", "aa", "aa"); // pw does not meet character length requirements (8-20 characters)
+        System.out.println();
+        account.changePassword("myCoolPW1!", "aBetterPW1", "aBetterPW1"); // valid new password, password is changed
+        System.out.println();
+
+        System.out.println("Demonstrating changeEmail()");
+        account.changeEmail("coolemail@yahoo.com"); // invalid, only takes "@gmail.com" emails
+        account.changeEmail(".abcdefgh@gmail.com"); // invalid, cannot start or end email username with a period (.)
+        account.changeEmail("woo@gmail.com"); // invalid, email username must be between 6 and 30 characters long
+        account.changeEmail("lets..go@gmail.com"); // invalid, cannot have consecutive periods
+        account.changeEmail("letsgo!!@gmail.com"); // invalid, cannot have characters that are not letters, digits, or periods
+        account.changeEmail("valid.email@gmail.com"); // valid email!! account email is changed to this
+        System.out.println();
+
+        System.out.println("Demonstrating toString()");
+        System.out.println(account.toString());
     }
 }
