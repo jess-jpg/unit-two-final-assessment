@@ -4,12 +4,12 @@
  * group project with James Wong and Michael Zhou
  * doc: https://docs.google.com/document/d/16QeONBDjzw7YelEpWf7fzxyFRauphnHRwBJ4ydkLy88/edit#
  *
+ * this is the user account settings.
+ *
  * Course: ICS4U1
  * Date: April 29 2022
  * @author Jessica Lu
  */
-
-import java.io.*;
 
 public class AccountSettings {
     /* attributes */
