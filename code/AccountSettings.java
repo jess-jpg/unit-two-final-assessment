@@ -35,29 +35,23 @@ public class AccountSettings {
     /**
      * Name: AccountSettings
      * Description: a user's settings in a music streaming app. data read in from a text file, not passed as parameters
+     * @param username account username
+     * @param password account password
+     * @param email account connected email
+     * @param displayName account display name
+     * @param dateOfBirth user date of birth
      */
-    public AccountSettings() {
-        try {
-            String filename = "user.txt"; // file is named user.txt
-            File file = new File(filename);
-            BufferedReader br = new BufferedReader(new FileReader(file));
-
-            // reading in from text file. assumes that all data follows
-            this.username = br.readLine();
-            this.password = br.readLine();
-            this.email = br.readLine();
-            this.displayName = br.readLine();
-            this.dateOfBirth = br.readLine();
+    public AccountSettings(String username, String password, String email, String displayName, String dateOfBirth) {
+            this.username = username;
+            this.password = password;
+            this.email = email;
+            this.displayName = displayName;
+            this.dateOfBirth = dateOfBirth;
 
             // default settings
             this.isExplicitOn = true;
             this.isAutoplayOn = true;
             this.isPrivateListeningOn = false;
-
-            br.close();
-        } catch (Exception e) {
-            System.out.println("ruh roh exception");
-        }
     }
 
     /* accessors */
@@ -321,7 +315,7 @@ public class AccountSettings {
     // testing every method
     public static void main(String[] args) {
         // constructor (creating an account)
-        AccountSettings account = new AccountSettings();
+        AccountSettings account = new AccountSettings("MYUSERNAME", "myCoolPW1", "mycoolemail@gmail.com", "luvr", "10192004");
 
         // accessors
         System.out.println("ACCESSORS");
