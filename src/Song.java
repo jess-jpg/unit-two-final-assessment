@@ -7,6 +7,7 @@
  */
 
 public class Song {
+
     /* attribute */
 
     /** the name of the song */
