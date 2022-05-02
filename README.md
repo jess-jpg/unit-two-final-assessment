@@ -6,5 +6,4 @@ We are developing the back-end of a music streaming app, like Spotify.
 **Agile Flavour**: Scrum
 
 
-artifacts 
-src (code)
+src = code
