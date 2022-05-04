@@ -5,6 +5,7 @@
  * Date: May 01 2022
  * @author James Wong
  */
+import java.util.*;
 
 public class Song {
 
@@ -158,13 +159,30 @@ public class Song {
         }
     }
 
-
     /* other methods */
+
+    /**
+     Name: queue
+     Description: returns all time attirbutes
+     @return void
+
+    public void queue() {
+        Scanner sc = new Scanner(System.in);
+
+        while () {
+
+        }
+
+        System.out.println("Pause/Play, Skip, Reverse");
+        String input = sc.nextLine();
+
+    }
+     */
 
     /**
      Name: toString
      Description: returns all song attributes
-     @return song attributes
+     @return song attributes (time in seconds)
      */
     public String toString() {
         String attributes;
@@ -179,7 +197,7 @@ public class Song {
     // testing every method
     public static void main(String[] args) {
         // constructor (importing a song)
-        Song song = new Song("Lucid Dreams", "Juice WRLD", "Goodbye & Good Riddance", true, "Rap", 3.98);
+        Song song = new Song("Lucid Dreams", "Juice WRLD", "Goodbye & Good Riddance", true, "Rap", 238.8);
 
         // accessors
         System.out.println("Accessors");
@@ -224,7 +242,7 @@ public class Song {
 
         song.setTime(-100);
         System.out.println(song.getTime()); // time doesnt change
-        song.setTime(2.9);
+        song.setTime(174);
         System.out.println(song.getTime());
         System.out.println();
 
