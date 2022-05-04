@@ -162,11 +162,16 @@ public class Song {
     /* other methods */
 
     /**
-     Name: queue
-     Description: returns all time attirbutes
-     @return void
+     Name: checkQueue
+     Description: returns the songs in queue
+     */
 
-    public void queue() {
+
+    /**
+     Name: playQueue
+     Description: returns all time attirbutes
+
+    public void playQueue() {
         Scanner sc = new Scanner(System.in);
 
         while () {
@@ -248,8 +253,8 @@ public class Song {
 
         // other methods
 
-        // System.out.println("Demonstrating toString()");
-        // System.out.println(song.toString());
+        System.out.println("Demonstrating toString()");
+        System.out.println(song.toString());
 
     }
 }
