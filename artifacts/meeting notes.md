@@ -11,3 +11,5 @@ Sprint #1 / Planning:
 Sprint #2:
 - may 2nd: https://docs.google.com/document/d/1ZgGmxS0QEQsao2R4RvioxkPGnxEOQ4TPhptwDRquX_g/edit#
 - may 3rd: missing, just continued working on sprint #2 / finishing up sprint #1. no new relevant issues! :)
+- may 4th: https://docs.google.com/document/d/1wo-wMw-O3hkyxQqLRqudV1zrmagg_KB3dRjMLRIZUuM/edit#
+- may 5th: https://docs.google.com/document/d/1SyIFLpe8qqiLsZqnQDKapL2epWQnwPYeH4XCfBUGQyQ/edit#
