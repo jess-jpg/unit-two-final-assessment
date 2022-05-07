@@ -53,14 +53,14 @@ public class Album {
      Description: return release date of the album
      @return the release date of the album
      */
-    public String getReleaseDate() {return this.releaseDate}
+    public String getReleaseDate() {return this.releaseDate;}
 
     /**
      Name: getIsLiked
      Description: return whether the song is liked or not
      @return whether the song is liked or not
      */
-    public String getIsLiked() {return this.isLiked;}
+    public boolean getIsLiked() {return this.isLiked;}
 
     /* mutators */
 
@@ -70,7 +70,7 @@ public class Album {
      * @param newTitle of the album
      */
     public void setTitle(String newTitle) {
-        // new title must be greater then 1 character
+        // new title must be greater than 1 character
         if (newTitle.length()>0) {
             this.title = newTitle;
         }
@@ -79,10 +79,10 @@ public class Album {
     /**
      * Name: setArtist
      * Description: set an artist for the album
-     * @param newTitle of the album
+     * @param newArtist of the album
      */
     public void setArtist(String newArtist) {
-        // new artist must be greater then 1 character
+        // new artist must be greater than 1 character
         if (newArtist.length()>0) {
             this.artist = newArtist;
         }
@@ -95,7 +95,7 @@ public class Album {
      */
     public void setReleaseDate(String newReleaseDate) {
         // sort by month day year, for example mm/dd/yyyy
-        this.releaseDate = newReleaseDate
+        this.releaseDate = newReleaseDate;
     }
 
     /**
@@ -117,14 +117,14 @@ public class Album {
      Name: storeSong
      Description: stores song information
      @return store songs on a txt file
-     */
+
     public void storeSong() {
         String fileIn = "songlist.txt"; // import file to code
 
         String song = this.title + "\n" + this.artist + "\n" + this.releaseDate + "\n" + this.isLiked;
 
         try{
-            BufferedWriter wr = new BufferedWriter ()
+            BufferedWriter wr = new BufferedWriter ();
             wr.write(fileIn);
 
         } catch (IOE exception) {
@@ -134,7 +134,7 @@ public class Album {
 
 
     }
-
+    */
     /**
      Name: takeSong
      Description: takess song information
@@ -164,6 +164,6 @@ public class Album {
         return attributes;
     }
 
-    System.out.println(album.storeSong);
+    //System.out.println(album.storeSong);
 
 }

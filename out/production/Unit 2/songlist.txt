@@ -1,0 +1,13 @@
+Name (String)
+Artist (String)
+Album (String)
+Liked (boolean)
+Genre (String)
+Time in seconds (int)
+
+Clair De Lune 
+Claude Debussy
+The Evil Within
+True
+Classical
+305

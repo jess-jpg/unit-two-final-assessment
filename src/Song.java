@@ -169,7 +169,7 @@ public class Song {
 
     /**
      Name: playQueue
-     Description: returns all time attirbutes
+     Description: returns all time attributes
 
     public void playQueue() {
         Scanner sc = new Scanner(System.in);
@@ -246,7 +246,7 @@ public class Song {
         System.out.println();
 
         song.setTime(-100);
-        System.out.println(song.getTime()); // time doesnt change
+        System.out.println(song.getTime()); // time doesn't change
         song.setTime(174);
         System.out.println(song.getTime());
         System.out.println();
