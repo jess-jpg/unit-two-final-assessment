@@ -36,16 +36,18 @@ public class Playable {
     public Playable(String title, int totalTime) {
         // for the subclasses under Playable, title and totalTime would be read in from a text file. however for Playable, it is read in from a parameter because a Playable object will not actually be created
         this.title = title;
-        this.totalTime = totalTime;
+
+        if (totalTime < 0) {
+            this.totalTime = 0;
+        } else {
+            this.totalTime = totalTime;
+        }
 
         // defaults
         this.timeAt = 0;
         this.isLiked = false;
         this.loopOn = false;
 
-        if (totalTime < 0) {
-            totalTime = 0;
-        }
     }
 
     /* accessors */
