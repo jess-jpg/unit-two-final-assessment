@@ -15,28 +15,46 @@
 public class Playable {
     /* attributes */
 
-    /** title of playable */
+    /**
+     * title of playable
+     */
     private String title;
-    /** total time of playable in seconds */
+    /**
+     * total time of playable in seconds
+     */
     private int totalTime;
-    /** what time the listener is at of playable */
+    /**
+     * what time the listener is at of playable
+     */
     private int timeAt;
-    /** whether the playable is liked or not */
+    /**
+     * whether the playable is liked or not
+     */
     private boolean isLiked;
-    /** whether loop is or not */
+    /**
+     * whether loop is or not
+     */
     private boolean loopOn;
 
     /* constructors */
+
     /**
      * Name: Playable
      * Description: constructs a playable object
-     * @param title title of playable
+     *
+     * @param title     title of playable
      * @param totalTime total time of playable in seconds
      */
     public Playable(String title, int totalTime) {
         // for the subclasses under Playable, title and totalTime would be read in from a text file. however for Playable, it is read in from a parameter because a Playable object will not actually be created
         this.title = title;
-        this.totalTime = totalTime;
+
+        // total time cannot be negative
+        if (totalTime < 0) {
+            this.totalTime = 0;
+        } else {
+            this.totalTime = totalTime;
+        }
 
         // defaults
         this.timeAt = 0;
@@ -49,6 +67,7 @@ public class Playable {
     /**
      * Name: getTitle
      * Description: return the playable title
+     *
      * @return title of the playable
      */
     public String getTitle() {
@@ -58,6 +77,7 @@ public class Playable {
     /**
      * Name: getTotalTime
      * Description: return the playable total time in seconds
+     *
      * @return total time of the playable in seconds
      */
     public int getTotalTime() {
@@ -67,6 +87,7 @@ public class Playable {
     /**
      * Name: getTimeAt
      * Description: return the time the listener is at of the playable
+     *
      * @return time the listener is at of the playable
      */
     public int getTimeAt() {
@@ -76,6 +97,7 @@ public class Playable {
     /**
      * Name: getIsLiked
      * Description: return whether the playable is liked or not
+     *
      * @return the listener is at of the playable
      */
     public boolean getIsLiked() {
@@ -85,9 +107,10 @@ public class Playable {
     /**
      * Name: getLoopOn
      * Description: return whether loop is on or not
+     *
      * @return time the listener is at of the playable
      */
-    public boolean getLoopOp() {
+    public boolean getLoopOn() {
         return this.loopOn;
     }
 
@@ -107,6 +130,7 @@ public class Playable {
      * Name: playPause
      * Description: plays the song / episode for a given amount of seconds. if the time you would be if you play is over, it depends on loop if it plays again
      * if loop is on, it restarts the playable. if loop is off, it stops at the end.
+     *
      * @param seconds how much time you play
      */
     public void playPause(int seconds) {
@@ -126,7 +150,8 @@ public class Playable {
 
     /**
      * Name: skipToTime
-     * Description: skip to a given time in seconds of the playable
+     * Description: skip to a given time in seconds of the playable (goes forwards or back)
+     *
      * @param time the time you want to skip to in seconds
      */
     public void skipToTime(int time) {
@@ -155,11 +180,80 @@ public class Playable {
     /**
      * Name: toString
      * Description: returns string of all attribute values
+     *
      * @return all attribute values
      */
     public String toString() {
         String line;
-        line = "Title: " + this.title + "\nTotal Time: " + this.totalTime + " seconds\nCurrently at: " + this.timeAt +  " seconds\nIs liked: " + this.isLiked + "\nLoop on: " + this.loopOn;
+        line = "Title: " + this.title + "\nTotal Time: " + this.totalTime + " seconds\nCurrently at: " + this.timeAt + " seconds\nIs liked: " + this.isLiked + "\nLoop on: " + this.loopOn;
         return line; // return the entire string
+    }
+
+    /**
+     * Name: main
+     * Description: testing methods
+     */
+    public static void main(String[] args) {
+        // constructor
+        Playable myPlayable = new Playable("Just Give Me A Reason", 242); // creating a playable named "Just Give Me A Reason"
+
+        // accessors
+        System.out.println("ACCESSORS"); // accessor for each attribute (5 total)
+        System.out.println();
+
+        System.out.println("Title: " + myPlayable.getTitle());
+        System.out.println("Total Time: " + myPlayable.getTotalTime() + " seconds");
+        System.out.println("Time at: " + myPlayable.getTimeAt() + " seconds");
+        System.out.println("Is liked: " + myPlayable.getIsLiked());
+        System.out.println("Loop on: " + myPlayable.getLoopOn());
+
+        System.out.println();
+        System.out.println("-----------");
+        System.out.println();
+
+        // mutators
+        System.out.println("MUTATORS"); // mutator for 1 attribute: isLiked attribute
+        System.out.println();
+
+        System.out.println("Liking the playable");
+        myPlayable.setIsLiked(true);
+        System.out.println(myPlayable.getIsLiked());
+
+        System.out.println();
+        System.out.println("-----------");
+        System.out.println();
+
+        // other methods
+        System.out.println("OTHER METHODS");
+        System.out.println();
+
+        System.out.println("Demonstrating playPause()");
+        myPlayable.playPause(-1); // invalid: play -1 seconds. cannot, bc it cannot go backwards
+        System.out.println(myPlayable.getTimeAt()); // outputs the new time (stays the same, 0 sec)
+        myPlayable.playPause(30); // play 30 seconds
+        System.out.println(myPlayable.getTimeAt()); // outputs the new time (30 secs)
+        myPlayable.playPause(1000); // tries to play 10000 seconds
+        System.out.println(myPlayable.getTimeAt()); // outputs the new time (242 secs which is the total. if you give an output that would give over the max, timeAt = max time)
+        System.out.println();
+
+        System.out.println("Demonstrating skipToTime()");
+        myPlayable.skipToTime(0); // can set time back to 0
+        System.out.println(myPlayable.getTimeAt());
+        myPlayable.skipToTime(1000); // invalid: 1000 is over the 242 seconds max time (so time = still 0)
+        System.out.println(myPlayable.getTimeAt());
+        System.out.println();
+
+        System.out.println("Demonstrating loop()");
+        myPlayable.loop(); // turn loop on
+        System.out.println(myPlayable.getLoopOn()); // output if loop is on (true)
+        System.out.println();
+
+        System.out.println("Demonstrating unLoop()");
+        myPlayable.unLoop(); // turn loop off
+        System.out.println(myPlayable.getLoopOn()); // output if loop is on (false)
+        System.out.println();
+
+        System.out.println("Demonstrating toString()");
+        System.out.println(myPlayable.toString()); // output toString
     }
 }
