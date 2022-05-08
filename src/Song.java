@@ -7,12 +7,10 @@
  */
 import java.util.*;
 
-public class Song {
+public class Song extends Playable {
 
     /* attribute */
 
-    /** the name of the song */
-    private String name;
     /** the artist of the song */
     private String artist;
     /** the album of the song */
@@ -21,32 +19,30 @@ public class Song {
     private boolean isLiked;
     /** the genre of the song */
     private String genre;
-    /** the length of the song */
-    private double time;
 
     /* constructors */
 
-    public Song(String name, String artist, String album, boolean isLiked, String genre, double time){
-        this.name = name;
+    /**
+     Name: Dog
+     Description: creates a song
+     @param title title of the song
+     @param artist artist of the song
+     @param album album of the song
+     @param genre genre of the song
+     @param totalTime total time of the song
+     @param
+     */
+    public Song(String title, int totalTime, int timeAt, boolean isLiked, boolean loopOn, String artist, String album, String genre){
+
+        super(title, totalTime);
+
         this.artist = artist;
         this.album = album;
-        this.isLiked = isLiked;
         this.genre = genre;
-        this.time = time;
 
-        if (time < 0) {
-            time = 0;
-        }
     }
 
     /* accessors */
-
-    /**
-     Name: getName
-     Description: return the song name
-     @return the name of the song
-     */
-    public String getName() {return this.name;}
 
     /**
      Name: getArtist
@@ -76,88 +72,7 @@ public class Song {
      */
     public String getGenre() {return this.genre;}
 
-    /**
-     Name: getTime
-     Description: return the song time
-     @return the time of the song
-     */
-    public double getTime() {return this.time;}
-
     /* mutators */
-
-    /**
-     * Name: setName
-     * Description: set a name for the song
-     * @param newName is the new song
-     */
-    public void setName(String newName) {
-        // new name must be greater then 1 character
-        if (newName.length()>0) {
-            this.name = newName;
-        }
-    }
-
-    /**
-     * Name: setArtist
-     * Description: set a artist for the song
-     * @param newArtist is the new song
-     */
-    public void setArtist(String newArtist) {
-        // new artist must be greater then 1 character
-        if (newArtist.length()>0){
-            this.artist = newArtist;
-        }
-    }
-
-    /**
-     * Name: setAlbum
-     * Description: set a album for the song
-     * @param newAlbum is the new song
-     */
-    public void setAlbum(String newAlbum) {
-        // new album must be greater then 1 character
-        if (newAlbum.length()>0){
-            this.album = newAlbum;
-        }
-    }
-
-    /**
-     * Name: setGenre
-     * Description: set a genre for the song
-     * @param newGenre is the new song
-     */
-    public void setGenre(String newGenre) {
-        // new Genre must be greater then 1 character
-        if (newGenre.length()>0){
-            this.genre = newGenre;
-        }
-    }
-
-    /**
-     Name: setIsLiked
-     Description: set if a song is liked or not
-     @param newIsLiked
-     */
-    public void setIsLiked(boolean newIsLiked) {
-        if (newIsLiked) {
-            this.isLiked = true;
-        } else {
-            this.isLiked = false;
-        }
-    }
-
-    /**
-     Name: setTime
-     Description: set the restrictions of the time of the song
-     @param newTime
-     */
-    public void setTime(double newTime) {
-        if (newTime < 0){
-            this.time = 0;
-        } else {
-            this.time = newTime;
-        }
-    }
 
     /* other methods */
 
@@ -193,7 +108,8 @@ public class Song {
         String attributes;
 
         // String name, String breed, String colour, int age, int energyLevel, double weight, boolean isTired, boolean isColdBlooded
-        attributes = "Name: " + this.name + "\nArtist: " + this.artist +  "\nAlbum: " + this.album + "\nLiked: " + this.isLiked + "\nGenre: " + this.genre + "\nTime: " + this.time;
+        System.out.println(super.toString());
+        attributes = "Artist: " + this.artist +  "\nAlbum: " + this.album + "\nLiked: " + this.isLiked + "\nGenre: " + this.genre;
 
         return attributes;
     }
@@ -206,11 +122,11 @@ public class Song {
 
         // accessors
         System.out.println("Accessors");
-        System.out.println("Name: " + song.getName());
+        System.out.println("Name: " + song.getTitle());
         System.out.println("Artist: " + song.getArtist());
         System.out.println("Album: " + song.getAlbum());
         System.out.println("Liked: " + song.getIsLiked());
-        System.out.println("Time: " + song.getTime());
+        System.out.println("Time: " + song.gettotalTime());
         System.out.println("Genre: " + song.getGenre());
 
         System.out.println();
@@ -221,10 +137,10 @@ public class Song {
         System.out.println("Mutators");
         System.out.println();
 
-        song.setName(""); // invalid too short (same error for artist, album, and genre)
-        System.out.println(song.getName()); // note that name doesn't change
+        song.setTitle(""); // invalid too short (same error for artist, album, and genre)
+        System.out.println(song.getTitle()); // note that name doesn't change
         song.setName("34+35");
-        System.out.println(song.getName()); // name of song changes
+        System.out.println(song.getTitle()); // name of song changes
         System.out.println();
 
         song.setArtist("Ariana Grande"); // valid
