@@ -77,27 +77,12 @@ public class Song extends Playable {
     /* other methods */
 
     /**
-     Name: checkQueue
-     Description: returns the songs in queue
+     Name: readInSong
+     Description: reads in the song to play
      */
-
-
-    /**
-     Name: playQueue
-     Description: returns all time attributes
-
-    public void playQueue() {
-        Scanner sc = new Scanner(System.in);
-
-        while () {
-
-        }
-
-        System.out.println("Pause/Play, Skip, Reverse");
-        String input = sc.nextLine();
+    public void readInString() {
 
     }
-     */
 
     /**
      Name: toString
@@ -117,55 +102,6 @@ public class Song extends Playable {
 
     // testing every method
     public static void main(String[] args) {
-        // constructor (importing a song)
-        Song song = new Song("Lucid Dreams", "Juice WRLD", "Goodbye & Good Riddance", true, "Rap", 238.8);
-
-        // accessors
-        System.out.println("Accessors");
-        System.out.println("Name: " + song.getTitle());
-        System.out.println("Artist: " + song.getArtist());
-        System.out.println("Album: " + song.getAlbum());
-        System.out.println("Liked: " + song.getIsLiked());
-        System.out.println("Time: " + song.gettotalTime());
-        System.out.println("Genre: " + song.getGenre());
-
-        System.out.println();
-        System.out.println("-----------");
-        System.out.println();
-
-        // mutators
-        System.out.println("Mutators");
-        System.out.println();
-
-        song.setTitle(""); // invalid too short (same error for artist, album, and genre)
-        System.out.println(song.getTitle()); // note that name doesn't change
-        song.setName("34+35");
-        System.out.println(song.getTitle()); // name of song changes
-        System.out.println();
-
-        song.setArtist("Ariana Grande"); // valid
-        System.out.println(song.getArtist()); // artist of song changes
-        System.out.println();
-
-        song.setAlbum(""); // invalid too short (same error for artist, album, and genre)
-        System.out.println(song.getAlbum()); // note that album doesn't change
-        song.setAlbum("Positions");
-        System.out.println(song.getAlbum()); // album of song changes
-        System.out.println();
-
-        song.setGenre("Hip hop"); // valid
-        System.out.println(song.getGenre()); // genre of song changes
-        System.out.println();
-
-        song.setIsLiked(false); // change liked song to unliked
-        System.out.println(song.getIsLiked()); // liked song changes to unliked
-        System.out.println();
-
-        song.setTime(-100);
-        System.out.println(song.getTime()); // time doesn't change
-        song.setTime(174);
-        System.out.println(song.getTime());
-        System.out.println();
 
         // other methods
 
