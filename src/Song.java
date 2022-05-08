@@ -7,12 +7,10 @@
  */
 import java.util.*;
 
-public class Song {
+public class Song extends Playable {
 
     /* attribute */
 
-    /** the name of the song */
-    private String name;
     /** the artist of the song */
     private String artist;
     /** the album of the song */
@@ -21,22 +19,30 @@ public class Song {
     private boolean isLiked;
     /** the genre of the song */
     private String genre;
-    /** the length of the song */
-    private double time;
 
     /* constructors */
 
-    public Song(String name, String artist, String album, boolean isLiked, String genre, double time){
-        this.name = name;
+    /**
+     Name: Dog
+     Description: creates a song
+     @param title title of the song
+     @param artist artist of the song
+     @param album album of the song
+     @param isLiked is the song liked
+     @param genre genre of the song
+     @param totalTime total time of the song
+     @param
+     */
+    public Song(String title, int totalTime, int timeAt,  boolean isLiked, boolean loopOn, String artist, String album, String genre){
+
+        super(title, totalTime, timeAt, );
+
         this.artist = artist;
         this.album = album;
         this.isLiked = isLiked;
         this.genre = genre;
-        this.time = time;
 
-        if (time < 0) {
-            time = 0;
-        }
+
     }
 
     /* accessors */
@@ -46,7 +52,7 @@ public class Song {
      Description: return the song name
      @return the name of the song
      */
-    public String getName() {return this.name;}
+    public String getName() {return this.title;}
 
     /**
      Name: getArtist

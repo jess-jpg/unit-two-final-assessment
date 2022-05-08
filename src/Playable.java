@@ -42,6 +42,10 @@ public class Playable {
         this.timeAt = 0;
         this.isLiked = false;
         this.loopOn = false;
+
+        if (totalTime < 0) {
+            totalTime = 0;
+        }
     }
 
     /* accessors */
