@@ -7,7 +7,7 @@
  */
 import java.util.*;
 
-public class Song extends Playable {
+public class Queue extends Playable {
 
     /* attribute */
 
@@ -18,7 +18,7 @@ public class Song extends Playable {
     /** the genre of the song */
     private String genre;
 
-    /* constructors */
+    /* constructor */
 
     /**
      Name: Song
@@ -32,14 +32,13 @@ public class Song extends Playable {
      @param isLiked if the song is liked or not
      @param loopOn if the song is on loop
      */
-    public Song(String title, int totalTime, int timeAt, boolean isLiked, boolean loopOn, String artist, String album, String genre){
+    public Queue(String title, int totalTime, int timeAt, boolean isLiked, boolean loopOn, String artist, String album, String genre){
 
         super(title, totalTime);
 
         this.artist = artist;
         this.album = album;
         this.genre = genre;
-
     }
 
     /* accessors */

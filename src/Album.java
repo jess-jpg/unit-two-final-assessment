@@ -7,12 +7,9 @@
  */
 import java.util.*;
 
-public class Album {
+public class Album extends Playable {
 
     /* attribute */
-
-    /** the title of the album */
-    private String title;
 
     /** the artist of the album */
     private String artist;
@@ -25,21 +22,23 @@ public class Album {
 
     /* constructors */
 
-    public Album(String title, String artist, String releaseDate, boolean isLiked) {
-        this.title = title;
+    /**
+     Name: Album
+     Description: creates an album
+     @param title title of the song
+     @param artist artist of the song
+     @param totalTime total time of the song
+     @param timeAt
+     @param isLiked if the song is liked or not
+     @param loopOn if the song is on loop
+     */
+    public Album(String title, int totalTime, int timeAt, boolean loopOn, boolean isLiked, String artist, String releaseDate) {
+        super(title, totalTime);
         this.artist = artist;
         this.releaseDate = releaseDate;
-        this.isLiked = isLiked;
     }
 
-    /* accessers */
-
-    /**
-     Name: getTitle
-     Description: return the title of the album
-     @return the title of the album
-     */
-    public String getTitle() {return this.title;}
+    /* accessors */
 
     /**
      Name: getArtist
@@ -55,26 +54,7 @@ public class Album {
      */
     public String getReleaseDate() {return this.releaseDate;}
 
-    /**
-     Name: getIsLiked
-     Description: return whether the song is liked or not
-     @return whether the song is liked or not
-     */
-    public boolean getIsLiked() {return this.isLiked;}
-
     /* mutators */
-
-    /**
-     * Name: setTitle
-     * Description: set a title for the album
-     * @param newTitle of the album
-     */
-    public void setTitle(String newTitle) {
-        // new title must be greater than 1 character
-        if (newTitle.length()>0) {
-            this.title = newTitle;
-        }
-    }
 
     /**
      * Name: setArtist
@@ -98,57 +78,7 @@ public class Album {
         this.releaseDate = newReleaseDate;
     }
 
-    /**
-     Name: setIsLiked
-     Description: set if a song is liked or not
-     @param newIsLiked
-     */
-    public void setIsLiked(boolean newIsLiked) {
-        if (newIsLiked) {
-            this.isLiked = true;
-        } else {
-            this.isLiked = false;
-        }
-    }
-
     /* other methods */
-
-    /**
-     Name: storeSong
-     Description: stores song information
-     @return store songs on a txt file
-
-    public void storeSong() {
-        String fileIn = "songlist.txt"; // import file to code
-
-        String song = this.title + "\n" + this.artist + "\n" + this.releaseDate + "\n" + this.isLiked;
-
-        try{
-            BufferedWriter wr = new BufferedWriter ();
-            wr.write(fileIn);
-
-        } catch (IOE exception) {
-            e.printStackTrace();
-        }
-
-
-
-    }
-    */
-    /**
-     Name: takeSong
-     Description: takess song information
-     @return take songs from a txt file
-
-    public void takeSong() {
-        String fileIn = "songlist.txt"; // import file to code
-
-        BufferedReader br = new BufferedReader(new FileReader(fileIn));
-
-
-    }
-     */
-
 
     /**
      Name: toString
@@ -159,11 +89,10 @@ public class Album {
         String attributes;
 
         // String name, String breed, String colour, int age, int energyLevel, double weight, boolean isTired, boolean isColdBlooded
-        attributes = "Title: " + this.title + "\nArtist: " + this.artist +  "\nRelease Date: " + this.releaseDate + "\nLiked: " + this.isLiked;
+        System.out.println(super.toString());
+        attributes = "Artist: " + this.artist +  "\nRelease Date: " + this.releaseDate ;
 
         return attributes;
     }
-
-    //System.out.println(album.storeSong);
 
 }
