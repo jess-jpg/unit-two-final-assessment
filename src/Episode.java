@@ -117,8 +117,7 @@ public class Episode {
         Other Methods
         */
 
-        //talk to the other members on how to do play time
-        //playlist method will be added once that sprint is done.
+
 
 
     }
