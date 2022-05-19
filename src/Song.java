@@ -28,11 +28,8 @@ public class Song extends Playable {
      @param album album of the song
      @param genre genre of the song
      @param totalTime total time of the song
-     @param timeAt
-     @param isLiked if the song is liked or not
-     @param loopOn if the song is on loop
      */
-    public Song(String title, int totalTime, int timeAt, boolean isLiked, boolean loopOn, String artist, String album, String genre){
+    public Song(String title, int totalTime, String artist, String album, String genre){
 
         super(title, totalTime);
 
@@ -72,7 +69,7 @@ public class Song extends Playable {
      * Description: set the artist name
      * @param  newArtist new possible artist
      */
-    public void artist(String newArtist){
+    public void setArtist(String newArtist){
         if (newArtist.length()>0) {
             this.artist = newArtist;
         }
@@ -83,7 +80,7 @@ public class Song extends Playable {
      * Description: set the album name
      * @param  newAlbum new possible artist
      */
-    public void album(String newAlbum) {
+    public void setAlbum(String newAlbum) {
         if (newAlbum.length()>0) {
             this.album = newAlbum;
         }
@@ -94,7 +91,7 @@ public class Song extends Playable {
      * Description: set the artist name
      * @param  newGenre new possible artist
      */
-    public void genre(String newGenre){
+    public void setGenre(String newGenre){
         if (newGenre.length()>0) {
             this.genre = newGenre;
         }
@@ -110,11 +107,57 @@ public class Song extends Playable {
     public String toString() {
         String attributes;
 
-        // String name, String breed, String colour, int age, int energyLevel, double weight, boolean isTired, boolean isColdBlooded
         System.out.println(super.toString());
         attributes = "Artist: " + this.artist +  "\nAlbum: " + this.album + "\nGenre: " + this.genre;
 
         return attributes;
     }
 
+    /**
+     * Name: main
+     * Description: testing methods
+     */
+    public static void main(String[] args) {
+
+        // constructor
+        // String title, int totalTime, String artist, String album, String genre
+        Song mySong = new Song("Secrets", 240, "The Weeknd", "Starboy", "Hip-Hop");
+
+        // accessors
+        System.out.println();
+        System.out.println("ACCESSORS"); // accessor for each attribute
+
+        System.out.println("Artist: " + mySong.getArtist());
+        System.out.println("Album: " + mySong.getAlbum());
+        System.out.println("Genre: " + mySong.getGenre());
+
+        // mutators
+        System.out.println();
+        System.out.println("MUTATORS"); // all mutators for each attribute
+
+        System.out.println("catching if the artist is less then 1 character");
+        mySong.setArtist("");   // invalid
+        System.out.println(mySong.getArtist());
+        mySong.setArtist("Frank Ocean"); // valid
+        System.out.println(mySong.getArtist());
+
+        System.out.println("catching if the album is less then 1 character");
+        mySong.setAlbum("");    // invalid
+        System.out.println(mySong.getAlbum());
+        mySong.setAlbum("Alone at Prom");   // valid
+        System.out.println(mySong.getAlbum());
+
+        System.out.println("catching if the genre is less then 1 character");
+        mySong.setGenre("");    // invalid
+        System.out.println(mySong.getGenre());
+        mySong.setGenre("Pop"); // valid
+        System.out.println(mySong.getGenre());
+
+        // other methods
+        System.out.println();
+        System.out.println("OTHER METHODS");    // extra method (only 1)
+
+        System.out.println("Demonstrating toString()");
+        System.out.println(mySong.toString()); // output toString
+    }
 }

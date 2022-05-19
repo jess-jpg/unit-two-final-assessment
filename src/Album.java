@@ -17,9 +17,6 @@ public class Album extends Playable {
     /** the release date of the album */
     private String releaseDate;
 
-    /** is the album liked */
-    private boolean isLiked;
-
     /* constructors */
 
     /**
@@ -28,11 +25,8 @@ public class Album extends Playable {
      @param title title of the song
      @param artist artist of the song
      @param totalTime total time of the song
-     @param timeAt
-     @param isLiked if the song is liked or not
-     @param loopOn if the song is on loop
      */
-    public Album(String title, int totalTime, int timeAt, boolean loopOn, boolean isLiked, String artist, String releaseDate) {
+    public Album(String title, int totalTime, String artist, String releaseDate) {
         super(title, totalTime);
         this.artist = artist;
         this.releaseDate = releaseDate;
@@ -74,7 +68,7 @@ public class Album extends Playable {
      * @param newReleaseDate of the album
      */
     public void setReleaseDate(String newReleaseDate) {
-        // sort by month day year, for example mm/dd/yyyy
+        // sort by year (xoxx)
         this.releaseDate = newReleaseDate;
     }
 
@@ -93,6 +87,44 @@ public class Album extends Playable {
         attributes = "Artist: " + this.artist +  "\nRelease Date: " + this.releaseDate ;
 
         return attributes;
+    }
+
+    /**
+     * Name: main
+     * Description: testing methods
+     */
+    public static void main(String[] args) {
+
+        // constructor
+        // String title, int totalTime, String artist, String releaseDate
+        Album myAlbum = new Album("X (Deluxe Version)", 3900, "Ed Sheeran", "2014");
+
+        // accessors
+        System.out.println();
+        System.out.println("ACCESSORS");
+
+        System.out.println("Artist: " + myAlbum.getArtist());
+        System.out.println("Release Date: " + myAlbum.getReleaseDate());
+
+        // mutators
+        System.out.println();
+        System.out.println("MUTATORS");
+
+        System.out.println("catching if the artist is less then 1 character");
+        myAlbum.setArtist("");  // invalid
+        System.out.println(myAlbum.getArtist());
+        myAlbum.setArtist("Taylor Swift");
+        System.out.println(myAlbum.getArtist());
+
+        System.out.println("Setting the release date of the album");
+        myAlbum.setReleaseDate("2022");
+
+        System.out.println();
+        System.out.println("OTHER METHODS");
+
+        System.out.println("Demonstrating toString()");
+        System.out.println(myAlbum.toString()); // output toString
+
     }
 
 }

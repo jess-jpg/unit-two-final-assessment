@@ -1,8 +1,8 @@
 /**
- * Creates a song with attributes
+ * Creates a queue with attributes
  *
  * Class: ICS4U1
- * Date: May 01 2022
+ * Date: May 03 2022
  * @author James Wong
  */
 import java.util.*;
@@ -21,7 +21,7 @@ public class Queue extends Playable {
     /* constructor */
 
     /**
-     Name: Song
+     Name: Queue
      Description: creates a song
      @param title title of the song
      @param artist artist of the song
