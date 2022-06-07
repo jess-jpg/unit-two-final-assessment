@@ -101,6 +101,8 @@ public class Queue extends Playable {
 
     /* other methods */
 
+
+
     /**
      Name: toString
      Description: returns all song attributes
