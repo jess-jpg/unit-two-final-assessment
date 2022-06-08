@@ -13,8 +13,7 @@ public class Queue {
 
     /** the number of songs in queue */
     private int numSong;
-    /** declare array which will be used as the queue */
-    private String queue[][] = new String [numSong][2];
+    private String queue[][] = new String[numSong][3];     /** THIS PART (please mr lee i need help)*/
 
     /* constructor */
 
@@ -38,12 +37,6 @@ public class Queue {
      */
     public int getNumSong() {return this.numSong;}
 
-    /**
-     Name: getQueue
-     Description: return the queue
-     @return the queue
-     */
-    public String[][] getQueue() {return this.queue;}
 
     /* mutators */
 
@@ -58,6 +51,7 @@ public class Queue {
         }
     }
 
+
     /* other methods */
 
     /**
@@ -65,20 +59,19 @@ public class Queue {
      Description: adds a song to the songs that will be played (the queue)
      */
     public void addQueue() {
-
+        String queue[][] = new String[numSong][3];      // declare an array as the queue
         Scanner sc = new Scanner(System.in);
 
-        for (int i=0; i<numSong; i++) {
+        for (int i=0; i<this.numSong; i++) {
             queue[i][0] = String.valueOf(i+1);
-            System.out.println(queue[i][0]);            /** delete later, mainly to test */
 
             // input the titles of all the songs
-            System.out.println("Title: ");
+            System.out.print("Title: ");
             String title = sc.nextLine();
             queue[i][1] = title;
 
             // input the artists of all the songs
-            System.out.println("Artist: ");
+            System.out.print("Artist: ");
             String artist = sc.nextLine();
             queue[i][2] = artist;
         }
@@ -89,15 +82,16 @@ public class Queue {
      Description: shuffles all songs in the queue
      */
     public void shuffle() {
+        String queue[][] = new String[numSong][3];      // declare an array as the queue
 
-        int largestNum = Integer.parseInt(queue[numSong-1][0]);
+        int largestNum = Integer.parseInt(queue[this.numSong-1][0]);
 
-        int hold[] = new int[numSong];
+        int hold[] = new int[this.numSong];
 
-        for (int j = 0; j<numSong; j++) {
+        for (int j = 0; j<this.numSong; j++) {
             int random = (int) (Math.random() * largestNum);
 
-            for (int k = 0; k<numSong; k++) {
+            for (int k = 0; k<this.numSong; k++) {
                 if (random == hold[k]) {
                     random = (int) (Math.random() * largestNum);
                 } else {
@@ -114,7 +108,7 @@ public class Queue {
      @return song attributes (time in seconds)
      */
     public void displayQueueToString() {
-
+        String queue[][] = new String[numSong][3];      // declare an array as the queue
         for (int l = 0; l<numSong; l++) {
             for (int h = 0; h<numSong; h++) {
                 System.out.println(queue[l][h]);
@@ -129,14 +123,13 @@ public class Queue {
     public static void main(String[] args) {
         // constructor
         // String title, int totalTime, String artist, String releaseDate
-        Queue myQueue = new Queue(3);
+        Queue myQueue = new Queue(9);
 
         // accessors
         System.out.println();
         System.out.println("ACCESSORS");
 
         System.out.println("Number of Songs: " + myQueue.getNumSong());
-        System.out.println("Queue: " + Arrays.deepToString(myQueue.getQueue()));
 
         // mutators
         System.out.println();
@@ -144,16 +137,23 @@ public class Queue {
 
         System.out.println("catching if the number of songs is a negative");
         myQueue.setNumSong(-2);  // invalid
+        System.out.println(myQueue.getNumSong());
 
-        System.out.print("only works when the number of songs is a positive");
-        myQueue.setNumSong(9);  // valid
+        System.out.println("only works when the number of songs is a positive");
+        myQueue.setNumSong(3);  // valid
+        System.out.println(myQueue.getNumSong());
 
         // other methods
         System.out.println();
         System.out.println("OTHER METHODS");
 
-        
+        System.out.println("Demonstrating add queue function");
+        myQueue.addQueue();
 
+        System.out.println("Demonstrating shuffle function");
+        myQueue.shuffle();
 
+        System.out.println("displaying queue to string");
+        myQueue.displayQueueToString();
     }
 }
