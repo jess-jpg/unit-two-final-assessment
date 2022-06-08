@@ -119,12 +119,11 @@ public class Album extends Playable {
         System.out.println("Setting the release date of the album");
         myAlbum.setReleaseDate("2022");
 
+        // other methods
         System.out.println();
         System.out.println("OTHER METHODS");
 
         System.out.println("Demonstrating toString()");
         System.out.println(myAlbum.toString()); // output toString
-
     }
-
 }

@@ -7,115 +7,153 @@
  */
 import java.util.*;
 
-public class Queue extends Playable {
+public class Queue {
 
     /* attribute */
 
-    /** the artist of the song */
-    private String artist;
-    /** the album of the song */
-    private String album;
-    /** the genre of the song */
-    private String genre;
+    /** the number of songs in queue */
+    private int numSong;
+    /** declare array which will be used as the queue */
+    private String queue[][] = new String [numSong][2];
 
     /* constructor */
 
     /**
      Name: Queue
      Description: creates a song
-     @param title title of the song
-     @param artist artist of the song
-     @param album album of the song
-     @param genre genre of the song
-     @param totalTime total time of the song
-     @param timeAt
-     @param isLiked if the song is liked or not
-     @param loopOn if the song is on loop
+     @param numSong number of songs
+
      */
-    public Queue(String title, int totalTime, int timeAt, boolean isLiked, boolean loopOn, String artist, String album, String genre){
+    public Queue(int numSong){
 
-        super(title, totalTime);
-
-        this.artist = artist;
-        this.album = album;
-        this.genre = genre;
+        this.numSong = numSong;
     }
 
     /* accessors */
 
     /**
-     Name: getArtist
-     Description: return the song artist
-     @return the artist of the song
+     Name: getNumSong
+     Description: return the number of songs
+     @return the number of songs in the queue
      */
-    public String getArtist() {return this.artist;}
+    public int getNumSong() {return this.numSong;}
 
     /**
-     Name: getAlbum
-     Description: return the song album
-     @return the album of the song
+     Name: getQueue
+     Description: return the queue
+     @return the queue
      */
-    public String getAlbum() {return this.album;}
-
-    /**
-     Name: getGenre
-     Description: return the song genre
-     @return the genre of the song
-     */
-    public String getGenre() {return this.genre;}
+    public String[][] getQueue() {return this.queue;}
 
     /* mutators */
 
     /**
-     * Name: artist
-     * Description: set the artist name
-     * @param  newArtist new possible artist
+     * Name: numSong
+     * Description: set the number of songs in the queue
+     * @param  newNumSong new number of songs in queue
      */
-    public void artist(String newArtist){
-        if (newArtist.length()>0) {
-            this.artist = newArtist;
-        }
-    }
-
-    /**
-     * Name: album
-     * Description: set the album name
-     * @param  newAlbum new possible artist
-     */
-    public void album(String newAlbum) {
-        if (newAlbum.length()>0) {
-            this.album = newAlbum;
-        }
-    }
-
-    /**
-     * Name: genre
-     * Description: set the artist name
-     * @param  newGenre new possible artist
-     */
-    public void genre(String newGenre){
-        if (newGenre.length()>0) {
-            this.genre = newGenre;
+    public void setNumSong(int newNumSong){
+        if (newNumSong>0) {
+            this.numSong = newNumSong;
         }
     }
 
     /* other methods */
 
+    /**
+     Name: addQueue
+     Description: adds a song to the songs that will be played (the queue)
+     */
+    public void addQueue() {
 
+        Scanner sc = new Scanner(System.in);
+
+        for (int i=0; i<numSong; i++) {
+            queue[i][0] = String.valueOf(i+1);
+            System.out.println(queue[i][0]);            /** delete later, mainly to test */
+
+            // input the titles of all the songs
+            System.out.println("Title: ");
+            String title = sc.nextLine();
+            queue[i][1] = title;
+
+            // input the artists of all the songs
+            System.out.println("Artist: ");
+            String artist = sc.nextLine();
+            queue[i][2] = artist;
+        }
+    }
 
     /**
-     Name: toString
+     Name: shuffle
+     Description: shuffles all songs in the queue
+     */
+    public void shuffle() {
+
+        int largestNum = Integer.parseInt(queue[numSong-1][0]);
+
+        int hold[] = new int[numSong];
+
+        for (int j = 0; j<numSong; j++) {
+            int random = (int) (Math.random() * largestNum);
+
+            for (int k = 0; k<numSong; k++) {
+                if (random == hold[k]) {
+                    random = (int) (Math.random() * largestNum);
+                } else {
+                    hold[k] = random;
+                }
+            }
+            queue[j][0] = String.valueOf(random);
+        }
+    }
+
+    /**
+     Name: displayQueueToString
      Description: returns all song attributes
      @return song attributes (time in seconds)
      */
-    public String toString() {
-        String attributes;
+    public void displayQueueToString() {
 
-        // String name, String breed, String colour, int age, int energyLevel, double weight, boolean isTired, boolean isColdBlooded
-        System.out.println(super.toString());
-        attributes = "Artist: " + this.artist +  "\nAlbum: " + this.album + "\nGenre: " + this.genre;
-
-        return attributes;
+        for (int l = 0; l<numSong; l++) {
+            for (int h = 0; h<numSong; h++) {
+                System.out.println(queue[l][h]);
+            }
+        }
     }
 
+    /**
+     * Name: main
+     * Description: testing methods
+     */
+    public static void main(String[] args) {
+        // constructor
+        // String title, int totalTime, String artist, String releaseDate
+        Queue myQueue = new Queue(3);
+
+        // accessors
+        System.out.println();
+        System.out.println("ACCESSORS");
+
+        System.out.println("Number of Songs: " + myQueue.getNumSong());
+        System.out.println("Queue: " + Arrays.deepToString(myQueue.getQueue()));
+
+        // mutators
+        System.out.println();
+        System.out.println("MUTATORS");
+
+        System.out.println("catching if the number of songs is a negative");
+        myQueue.setNumSong(-2);  // invalid
+
+        System.out.print("only works when the number of songs is a positive");
+        myQueue.setNumSong(9);  // valid
+
+        // other methods
+        System.out.println();
+        System.out.println("OTHER METHODS");
+
+        
+
+
+    }
 }
