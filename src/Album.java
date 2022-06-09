@@ -82,7 +82,6 @@ public class Album extends Playable {
     public String toString() {
         String attributes;
 
-        // String name, String breed, String colour, int age, int energyLevel, double weight, boolean isTired, boolean isColdBlooded
         System.out.println(super.toString());
         attributes = "Artist: " + this.artist +  "\nRelease Date: " + this.releaseDate ;
 
