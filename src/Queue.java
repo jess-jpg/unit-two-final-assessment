@@ -23,7 +23,7 @@ public class Queue{
      */
     public Queue(){
         this.numSong = 0;
-        this.queue = new ArrayList<>();
+        this.queue = new ArrayList<Song>();
     }
 
     /* accessors */
